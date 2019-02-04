@@ -5,7 +5,11 @@ public class InitialSecurity{
     Scanner sc = new Scanner(System.in);
     public InitialSecurity(){
         System.out.println("Please Input Access Code To Continue.");
-		String input = sc.nextline();
+        String input = sc.nextLine();
+        if(input.equals(code)){
+            //PasswordStorage();
+        }
+            
     }
-    
+
 }
