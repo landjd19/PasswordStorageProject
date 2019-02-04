@@ -1,7 +1,11 @@
+import java.util.*;
+
 public class InitialSecurity{
-
-	public InitialSecurity(){
-	
-	}
-
+    String code = "ea1785";
+    Scanner sc = new Scanner(System.in);
+    public InitialSecurity(){
+        System.out.println("Please Input Access Code To Continue.");
+		String input = sc.nextline();
+    }
+    
 }
