@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class PasswordGenerator
+{
+    public String makePass(int input){
+        int chars = 0;
+        String pass = "";
+        String alphaLower = "abcdefghijklmnopqrstuvwxyz";
+        String alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String numer = "1234567890";
+        String sym = "!@#$%^&*?";
+        boolean hasCap = false;
+        boolean hasLower = false;
+        boolean hasNumer = false;
+        boolean hasSym = false;
+        while(chars < input){
+            int charType = (int)(Math.random() * 4) + 1;
+            int alphaSpot = (int)((Math.random() * 25) + 1);
+            int numerSpot = (int)((Math.random() * 9) + 1);
+            int symSpot = (int)((Math.random() * 8) + 1);            
+            if(charType == 1){
+                pass += alphaUpper.substring(alphaSpot, alphaSpot + 1);
+                hasCap = true;
+            }else if(charType == 2){
+                pass += numer.substring(numerSpot, numerSpot + 1);
+                hasNumer = true;
+            }else if(charType == 3){
+                pass += sym.substring(symSpot, symSpot + 1);
+                hasSym = true;
+            }else if(charType == 4){
+                pass += alphaLower.substring(alphaSpot, alphaSpot +1);
+                hasLower = true;
+            }
+            chars++;
+            //System.out.println(chars);
+            if(hasCap == false && chars == input || hasLower == false && chars == input || hasNumer == false && chars == input || hasSym == false && chars == input){
+                hasCap = false;
+                hasLower = false;
+                hasNumer = false;
+                hasSym = false;
+                chars = 0;
+                pass = "";
+            }
+        }
+
+        return pass;
+    }
+}
