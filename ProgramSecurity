@@ -1,14 +1,49 @@
 import java.util.*;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 
 public class InitialSecurity{
     String code = "ea1785";
-    Scanner sc = new Scanner(System.in);
+
     public InitialSecurity(){
-        System.out.println("Please Input Access Code To Continue.");
-        String input = sc.nextLine();
-        if(input.equals(code)){
-            //PasswordStorage();
-        }
+        JFrame frame = new JFrame("Chat Frame");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 400);
+
+
+        //Creating the panel at bottom and adding components
+        JPanel panel = new JPanel(); // the panel is not visible in output
+        JLabel label = new JLabel("Enter Access Code");
+        JTextField tf = new JTextField(15); 
+        JButton send = new JButton("Send");
+        tf.setSize(100, 40);
+
+        panel.add(label); // Components Added using Flow Layout
+        panel.add(label); // Components Added using Flow Layout
+        panel.add(tf);
+        panel.add(send);
+
+        // Text Area at the Center
+        JLabel console = new JLabel();
+
+        //Adding Components to the frame.
+        frame.getContentPane().add(BorderLayout.SOUTH, panel);
+        frame.getContentPane().add(BorderLayout.NORTH, console);
+        frame.setVisible(true);
+        
+        console.setText("Please Input Access Code To Continue.");
+        send.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    String input = tf.getText();
+                    if(input.equals(code)){
+                        //PasswordStorage();
+                        console.setText("Access Granted");
+                    }
+                }
+
+            });
+
             
     }
 
